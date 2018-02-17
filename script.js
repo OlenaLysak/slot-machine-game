@@ -2,7 +2,7 @@ const IMAGE_SIZE = 150;
 const REEL_LENGTH = 3;
 const REEL_NUMBER = 5;
 const SPIN_TIME = 2000;
-const SPIN_DELAY = 500;
+const SPIN_DELAY = 300;
 $(document).ready(onReady);
 
 const imgs = [
@@ -17,7 +17,11 @@ const imgs = [
     'img/lowwin_spade.png',
     'img/lowwin_star.png',
     'img/wild.png'
-];
+].map( src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+});
 let ctx;
 
 function onReady() {
@@ -46,20 +50,14 @@ function startNewGame() {
 }
 
 function drawGame(reels) {
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     reels.forEach((item, i) => drawReel(item, IMAGE_SIZE * i, 0));
     function drawReel(reel, x, y) {
         Array(REEL_LENGTH).fill(0).forEach((value, index) =>
             drawImage(reel[index], x, y + IMAGE_SIZE * index));
     }
-    function drawImage(imgSource, x, y) {
-        //ctx.clearRect(x, y, IMAGE_SIZE, IMAGE_SIZE);
-        const img = new Image();
-        img.src = imgSource;
-        img.onload = function () {
-            ctx.clearRect(x, y, IMAGE_SIZE, IMAGE_SIZE);
-            ctx.drawImage(img, x, y, 150, 150);
-        };
+    function drawImage(img, x, y) {
+        ctx.drawImage(img, x, y, 150, 150);
     }
 }
 
