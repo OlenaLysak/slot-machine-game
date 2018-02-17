@@ -1,7 +1,7 @@
 const IMAGE_SIZE = 150;
 const REEL_LENGTH = 3;
 const REEL_NUMBER = 5;
-const SPIN_TIME = 5000;
+const SPIN_TIME = 2000;
 const SPIN_DELAY = 500;
 $(document).ready(onReady);
 
@@ -46,13 +46,12 @@ function onReady() {
             setTimeout(() => {
                     clearInterval(item);
                     if (index === array.length - 1) {
-
+                        checkBonus(reels)
                     }
                 }
                 , SPIN_TIME + SPIN_DELAY * index
             )
         });
-        requestAnimationFrame(()=>drawGame(reels));
     }
 
     function drawGame(reels) {
@@ -78,6 +77,18 @@ function onReady() {
     }
 }
 
+function countPoints(reels) {
+    const middleRow = reels.map((item) => item[1]);
+    const itemNum = middleRow.map(item => middleRow.filter(item1 => item1 === item).length);
+    return Math.max(...itemNum)
+}
 function checkBonus(reels) {
-
+    const points = countPoints(reels);
+    if (points === 5) {
+        alert('Exellent!')
+    } else if (points === 4) {
+        alert('Great!')
+    } else if (points === 2) {
+        alert('Good!')
+    } else alert('You loose!')
 }
