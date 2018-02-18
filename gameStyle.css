@@ -9,16 +9,25 @@ body {
     align-items: center;
 }
 .label {
-    margin-top: 50px;
+    margin-top: 20px;
     font-family: "Comic Sans MS";
     color: purple;
     font-weight: bold;
     font-size: 32px;
+    text-shadow: 2px 2px yellow;
 }
 #canvas {
     display: flex;
     margin: 20px;
     background-color: rebeccapurple;
-    width: 750px;
-    height: 450px;
+    border-radius: 10px;
+}
+#startGame {
+    width: 70px;
+    height: 30px;
+    border-radius: 7px;
+    background-color: rebeccapurple;
+    color: yellow;
+    box-shadow: 2px 2px 2px lightgray;
+    font-weight: bold;
 }

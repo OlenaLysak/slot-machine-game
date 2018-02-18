@@ -1,4 +1,4 @@
-const IMAGE_SIZE = 150;
+const IMAGE_SIZE = 100;
 const REEL_LENGTH = 3;
 const REEL_NUMBER = 5;
 const SPIN_TIME = 2000;
@@ -57,7 +57,7 @@ function drawGame(reels) {
             drawImage(reel[index], x, y + IMAGE_SIZE * index));
     }
     function drawImage(img, x, y) {
-        ctx.drawImage(img, x, y, 150, 150);
+        ctx.drawImage(img, x, y, IMAGE_SIZE, IMAGE_SIZE);
     }
 }
 
