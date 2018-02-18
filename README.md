@@ -1,1 +1,1 @@
-# slot-machine-game
+You can see demo by https://olenalysak.github.io/slot-machine-game/
