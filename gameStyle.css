@@ -30,6 +30,7 @@ body {
     color: yellow;
     box-shadow: 2px 2px 2px lightgray;
     font-weight: bold;
+    cursor: pointer;
 }
 #result {
     display: flex;
