@@ -17,7 +17,7 @@ const imgs = [
     'img/lowwin_spade.png',
     'img/lowwin_star.png',
     'img/wild.png'
-].map( src => {
+].map(src => {
     const img = new Image();
     img.src = src;
     return img;
@@ -27,16 +27,17 @@ let ctx;
 function onReady() {
     const canvas = $('#canvas').get(0);
     $('#startGame').click(startNewGame);
-    if ( canvas && canvas.getContext) {
+    if (canvas && canvas.getContext) {
         ctx = canvas.getContext('2d');
     }
 }
+
 function startNewGame() {
     const reels = Array(REEL_NUMBER).fill(0).map(getRandomReel);
     const intervals = reels.map(item => setInterval(() => { //run slots
-                item.push(item.shift());
-                requestAnimationFrame(() => drawGame(reels));
-            }, 100));
+        item.push(item.shift());
+        requestAnimationFrame(() => drawGame(reels));
+    }, 100));
     intervals.forEach((item, index, array) => { //stop slots one by one
         setTimeout(() => {
                 clearInterval(item);
@@ -52,10 +53,12 @@ function startNewGame() {
 function drawGame(reels) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     reels.forEach((item, i) => drawReel(item, IMAGE_SIZE * i, 0));
+
     function drawReel(reel, x, y) {
         Array(REEL_LENGTH).fill(0).forEach((value, index) =>
             drawImage(reel[index], x, y + IMAGE_SIZE * index));
     }
+
     function drawImage(img, x, y) {
         ctx.drawImage(img, x, y, IMAGE_SIZE, IMAGE_SIZE);
     }
@@ -72,10 +75,12 @@ function countPoints(reels) {
 function checkBonus(reels) {
     const points = countPoints(reels);
     if (points === 5) {
-        alert('Exellent!')
+        $('#result').text('Exellent!');
     } else if (points === 4) {
-        alert('Great!')
+        $('#result').text('Great!');
+    } else if (points === 3) {
+        $('#result').text('Good!');
     } else if (points === 2) {
-        alert('Good!')
-    } else alert('You loose!')
+        $('#result').text('Not bad!');
+    } else $('#result').text('You loose!');
 }

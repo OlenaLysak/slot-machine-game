@@ -31,3 +31,12 @@ body {
     box-shadow: 2px 2px 2px lightgray;
     font-weight: bold;
 }
+#result {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    font-size: 30px;
+    color: yellow;
+    text-shadow: 2px 2px darkred;
+    font-family: "Comic Sans MS";
+}
