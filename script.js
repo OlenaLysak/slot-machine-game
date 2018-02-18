@@ -1,8 +1,10 @@
+(function () {
+
 const IMAGE_SIZE = 100;
 const REEL_LENGTH = 3;
 const REEL_NUMBER = 5;
 const SPIN_TIME = 2000;
-const SPIN_DELAY = 300;
+const SPIN_DELAY = 400;
 $(document).ready(onReady);
 
 const imgs = [
@@ -52,6 +54,10 @@ function startNewGame() {
 
 function drawGame(reels) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.globalAlpha=0.2;
+    ctx.fillStyle="white";
+    ctx.fillRect(0,IMAGE_SIZE,IMAGE_SIZE*5,IMAGE_SIZE);
+    ctx.globalAlpha=1;
     reels.forEach((item, i) => drawReel(item, IMAGE_SIZE * i, 0));
 
     function drawReel(reel, x, y) {
@@ -84,3 +90,5 @@ function checkBonus(reels) {
         $('#result').text('Not bad!');
     } else $('#result').text('You loose!');
 }
+
+})();
